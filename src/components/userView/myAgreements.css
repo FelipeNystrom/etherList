@@ -1,0 +1,51 @@
+.agreementsView {
+  position: relative;
+  width: 50%;
+  margin: 1%;
+  margin-top: 0;
+  display: flex;
+  padding: 1%;
+  border: 0.2rem solid hsla(288, 22%, 53%, 0.9);
+  box-shadow: 0.3rem 0.3rem 0.2rem hsla(288, 52%, 35%, 0.9);
+  overflow: hidden;
+}
+.agreementsTitle {
+  text-align: center;
+  margin-top: 2rem;
+}
+
+.agreementsBox {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+}
+
+.agreementsBoxSettings {
+  background-color: hsla(288, 22%, 53%);
+  width: 30%;
+  margin: 1% 4%;
+  margin-top: 0;
+  box-shadow: 0.4rem 0.4rem 0.2rem hsla(288, 52%, 30%, 0.9);
+}
+
+.agreementsBoxSettingsMenu {
+  margin: 1rem auto;
+}
+.settingItem {
+  font-size: 1.3rem;
+  color: whitesmoke;
+  width: 80%;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.hide {
+  right: -100%;
+  z-index: 50;
+}
+
+.show {
+  right: 0;
+  z-index: 100;
+}

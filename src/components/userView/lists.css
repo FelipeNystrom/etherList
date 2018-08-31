@@ -1,0 +1,31 @@
+.listViewWrapper {
+  width: 100%;
+  position: absoulte;
+  right: 0;
+  top: 0;
+  transition: all 2s ease-in-out;
+}
+
+.agreementsList {
+  width: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: scroll;
+  height: 100%;
+}
+.agreementsListItem {
+  width: 100%;
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+  padding: 2%;
+  border: 2px solid hsla(288, 22%, 53%, 0.9);
+  transition: all 100ms ease-in-out;
+  text-align: center;
+}
+
+.agreementsListItem:hover,
+.agreementsListItem:active {
+  border-left: 3rem solid hsla(288, 22%, 53%, 0.8);
+}
