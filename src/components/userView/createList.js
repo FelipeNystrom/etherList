@@ -6,15 +6,25 @@ class CreateList extends Component {
     liveInput: '',
     listItems: [],
     listTitle: 'List title',
-    isHidden: true,
-    isShowing: false
+    isHidden: true
   };
-
   componentDidMount() {
-    if (this.props.classname === 'hide') {
-      setTimeout(() => {
-        this.setState({ isHidden: true });
-      }, 500);
+    if (this.props.listView) {
+      this.setState({ isHidden: true });
+    }
+
+    if (!this.props.listView) {
+      this.setState({
+        isHidden: false
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.listView !== this.props.listView) {
+      this.setState({
+        isHidden: !this.state.isHidden
+      });
     }
   }
 
@@ -31,8 +41,17 @@ class CreateList extends Component {
     }));
   };
 
+  handleSave = newList => {
+    const { saveList } = this.props;
+    saveList(newList);
+  };
+
   render() {
-    const { liveInput, listItems, listTitle } = this.state;
+    const { liveInput, listItems, listTitle, isHidden } = this.state;
+    const newList = {
+      listTitle: listTitle,
+      listItems: listItems
+    };
     const generateListItems = listItems.map((item, i) => {
       return (
         <li className="listItem" key={i}>
@@ -42,13 +61,7 @@ class CreateList extends Component {
     });
     return (
       <Fragment>
-        <div
-          className={
-            this.props.classname
-              ? `formWrapper ${this.props.classname}`
-              : `formWrapper ${this.props.classname}`
-          }
-        >
+        <div className={isHidden ? `formWrapper hide` : `formWrapper show`}>
           <form className="createListForm" onSubmit={this.handleSubmit}>
             <label>Add to list:</label>
             <input
@@ -72,8 +85,18 @@ class CreateList extends Component {
           </h6>
           <ul className="createList">{generateListItems}</ul>
           <div className="listControlButtonWrapper">
-            <button className="listControlButton">&#x2714;</button>
-            <button className="listControlButton">&#x2715;</button>
+            <button
+              name="save"
+              onClick={() => {
+                this.handleSave(newList);
+              }}
+              className="listControlButton"
+            >
+              &#x2714;
+            </button>
+            <button name="abort" className="listControlButton">
+              &#x2715;
+            </button>
           </div>
         </div>
       </Fragment>

@@ -37,17 +37,24 @@
   transition: all 30ms ease-in-out;
 }
 
-.menuItem:hover,
-.menuItem:active {
+.menuItem:hover {
   border-top: 1px solid hsla(288, 22%, 53%, 0.9);
   box-shadow: 0 3px 3px hsla(288, 35%, 40%, 0.9);
 }
+.menuItem:active {
+  box-shadow: 0 1px 1px hsla(288, 35%, 40%, 0.9);
+}
 
-.right:hover,
-.right:active {
+.right:hover {
   border-left: 3px solid hsla(288, 22%, 53%, 0.9);
 }
-.left:hover,
-.left:active {
+.right:active {
+  border-left: 1px solid hsla(288, 22%, 53%, 0.9);
+}
+.left:hover {
   border-right: 3px solid hsla(288, 22%, 53%, 0.9);
+}
+
+.left:active {
+  border-right: 1px solid hsla(288, 22%, 53%, 0.9);
 }

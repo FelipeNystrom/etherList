@@ -16,7 +16,10 @@ class MyAgreements extends Component {
 
   saveList = newList => {
     this.setState(prevState => {
-      return { lists: [...prevState, newList] };
+      return {
+        lists: [...prevState.lists, newList],
+        listView: true
+      };
     });
   };
 
@@ -28,23 +31,16 @@ class MyAgreements extends Component {
         <div className="agreementsBox">
           <div className="agreementsBoxSettings">
             <ul className="agreementsBoxSettingsMenu">
-              <li className="settingItem" onClick={this.handleClick}>
-                Create New Agreement
+              <li className="settingItem">
+                <button className="settingOption" onClick={this.handleClick}>
+                  Create New Agreement
+                </button>
               </li>
             </ul>
           </div>
           <div className="agreementsView">
-            {listView ? (
-              <Fragment>
-                <Lists lists={lists} classname="show" />{' '}
-                <CreateList classname="hide" />
-              </Fragment>
-            ) : (
-              <Fragment>
-                <CreateList saveList={this.saveList} classname="show" />{' '}
-                <Lists classname="hide" />
-              </Fragment>
-            )}
+            <Lists lists={lists} listView={listView} />
+            <CreateList saveList={this.saveList} listView={listView} />
           </div>
         </div>
       </Fragment>

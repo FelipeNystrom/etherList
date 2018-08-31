@@ -6,42 +6,39 @@ class Lists extends Component {
     isHidden: false
   };
   componentDidMount() {
-    if (this.props.classname === 'hide') {
-      setTimeout(() => {
-        this.setState({ isHidden: true });
-      }, 500);
+    if (this.props.listView) {
+      this.setState({ isHidden: false });
     }
 
-    if (this.props.classname === 'show') {
-      setTimeout(() => {
-        this.setState({
-          isHidden: false
-        });
-      }, 500);
+    if (!this.props.listView) {
+      this.setState({
+        isHidden: true
+      });
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (prevProps.listView !== this.props.listView) {
+      this.setState({
+        isHidden: !this.state.isHidden
+      });
     }
   }
   render() {
     const { isHidden } = this.state;
     const { lists } = this.props;
-    const generateLists = lists.map(list => {
-      return <li className="agreementsListItem">{list}</li>;
+    const generateLists = lists.map((list, i) => {
+      return (
+        <li key={i} className="agreementsListItem">
+          {list.listTitle} ({list.listItems.length})
+        </li>
+      );
     });
     return (
       <div
-        className={
-          isHidden
-            ? `listViewWrapper ${this.props.classname}`
-            : `listViewWrapper ${this.props.classname}`
-        }
+        className={isHidden ? `listViewWrapper hide` : `listViewWrapper show`}
       >
-        <ul className="agreementsList">
-          <li className="agreementsListItem">Agreements title</li>
-          <li className="agreementsListItem">Another title</li>
-          <li className="agreementsListItem">Agreements title</li>
-          <li className="agreementsListItem">Another title</li>
-          <li className="agreementsListItem">Agreements title</li>
-          <li className="agreementsListItem">Another title</li>
-        </ul>
+        <ul className="agreementsList">{generateLists}</ul>
       </div>
     );
   }
