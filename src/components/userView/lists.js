@@ -35,9 +35,7 @@ class Lists extends Component {
       );
     });
     return (
-      <div
-        className={isHidden ? `listViewWrapper hide` : `listViewWrapper show`}
-      >
+      <div className={`listViewWrapper ${isHidden ? `hide` : `show`}`}>
         <ul className="agreementsList">{generateLists}</ul>
       </div>
     );

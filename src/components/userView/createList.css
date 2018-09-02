@@ -1,11 +1,14 @@
 .formWrapper {
+  width: 100%;
+  height: 100%;
   flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2%;
   position: absolute;
-  transition: all 2s ease-in-out;
+  right: -150%;
+  padding: 1%;
+  transition: all 0.5s ease-in-out;
 }
 
 .createListForm {
@@ -115,7 +118,7 @@
   box-shadow: 0.3rem 0.3rem 0.2rem hsla(288, 52%, 35%, 0.9);
 }
 
-.show {
+/* .show {
   height: 100%;
   width: 100%;
   position: absoulte;
@@ -131,4 +134,4 @@
   top: 0;
   right: -100%;
   transition: all 1s ease-in-out;
-}
+} */

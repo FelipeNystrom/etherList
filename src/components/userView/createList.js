@@ -44,6 +44,11 @@ class CreateList extends Component {
   handleSave = newList => {
     const { saveList } = this.props;
     saveList(newList);
+    this.setState({
+      liveInput: '',
+      listItems: [],
+      listTitle: 'List title'
+    });
   };
 
   render() {
@@ -61,7 +66,7 @@ class CreateList extends Component {
     });
     return (
       <Fragment>
-        <div className={isHidden ? `formWrapper hide` : `formWrapper show`}>
+        <div className={`formWrapper ${isHidden ? `hide` : `show`}`}>
           <form className="createListForm" onSubmit={this.handleSubmit}>
             <label>Add to list:</label>
             <input
