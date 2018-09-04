@@ -61,6 +61,12 @@ class CreateList extends Component {
       return (
         <li className="listItem" key={i}>
           {item}
+          <span className="update">
+            <i class="far fa-edit" />
+          </span>
+          <span className="delete">
+            <i class="far fa-trash-alt" />
+          </span>
         </li>
       );
     });
